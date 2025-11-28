@@ -5,7 +5,34 @@ h1 {
   font-size: 100px;
   /* Kleiner Schatten für bessere Lesbarkeit auf Bildern */
   text-shadow: 2px 2px 4px #000000; 
+  font-weight: 100;
 }
+
+.mr-bedfort-regular {
+  font-family: "Mr Bedfort", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ewert-regular {
+  font-family: "Ewert", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-puddles-regular {
+  font-family: "Rubik Puddles", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik-wet-paint-regular {
+  font-family: "Rubik Wet Paint", system-ui;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 25px;
+}
+
 
 h2 {
   margin-top: 0;
@@ -22,11 +49,11 @@ body {
   align-items: center;
   
   /* Hintergrundbild */
-  background-image: url('background.png');
+  background-image: url('AI_bg2.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  /*background-attachment: fixed;*/
   margin: 0;
   min-height: 100vh; /* Mindestens so hoch wie der Bildschirm */
 }
@@ -90,13 +117,14 @@ body {
 .front {
   background-color:transparent;
   color:  #d1d2c8;
-  font-size: 40px;
+  font-size: 60px;
   font-weight: bold;
+  font-family: "Rubik Puddles", system-ui;
 }
 
 /* RÜCKSEITE (Der Text/Aufgabe) */
 .back {
-  background-color: #f1f1f1; /* Helle Karte */
+  background-color: #d1d2c8; /* Helle Karte */
   color: #333;
   transform: rotateY(180deg); /* Ist am Anfang schon gedreht */
   font-size: 16px;
@@ -106,7 +134,7 @@ body {
 
 /* Hover-Effekt nur wenn nicht offen */
 .door-container:hover .front {
-  background-color: #c43e3e; /* Helleres Rot bei Hover */
+  background-color: rgba(241, 239, 232, 0.3); /* Helleres Rot bei Hover */
 }
 
 /* --- MEDIA QUERY (Handy) --- */
@@ -141,5 +169,6 @@ body {
   .back {
     font-size: 12px; /* Text muss klein sein, damit er reinpasst */
     padding: 2px;
+  }
   }
 }
