@@ -9,3 +9,52 @@ h2 {
   color: #d1d2c8;
   text-align: center;
 }
+#main {
+  margin: 0px 20px;
+  text-align: center;
+}
+
+#doors{
+  position: relative;
+  padding: 40px;
+  border: 2px solid;
+  border-radius: 10px;
+}
+
+.Grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: start;
+  gap: 25px 25px;
+  /* WICHTIG: Kein fester Abstand mehr */
+  padding: 0 5px;
+  /* Kleines Padding an den Seiten ist okay */
+  width: 90%;
+  /* Den gesamten Platz nutzen */
+}
+
+.button{
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 40px;
+}
+
+/* Media Query: Alles hier drin gilt nur für Bildschirme,
+   die kleiner als 900px sind (Tablets & Handys) */
+@media screen and (max-width: 900px) {
+
+  /* Ändert das Gitter auf 4 Spalten */
+  .Grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* WICHTIG: Damit die Buttons auch in die schmaleren Spalten passen */
+  .button {
+    width: 100%;       /* Button nimmt die Breite der Spalte an */
+    height: auto;      /* Höhe passt sich automatisch an */
+    aspect-ratio: 1/1; /* Sorgt dafür, dass die Buttons quadratisch bleiben */
+    min-width: 0;      /* Verhindert, dass der Button aus dem Raster bricht */
+  }
+}
