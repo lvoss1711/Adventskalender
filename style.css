@@ -3,119 +3,138 @@ h1 {
   text-align: center;
   color: #d1d2c8;
   font-size: 100px;
+  /* Kleiner Schatten für bessere Lesbarkeit auf Bildern */
+  text-shadow: 2px 2px 4px #000000; 
 }
 
 h2 {
- margin-top: 0;
- margin-bottom: 50px;
+  margin-top: 0;
+  margin-bottom: 50px;
   color: #d1d2c8;
   text-align: center;
+  text-shadow: 2px 2px 4px #000000;
 }
-#main {
-  margin: 0px 20px;
-  text-align: center;
-}
+
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Replace 'image.jpg' with the actual name of your file */
-    background-image: url('background.png');
-    
-    /* Ensures the image covers the whole screen without stretching weirdly */
-    background-size: cover;
-    
-    /* Keeps the image centered */
-    background-position: center;
-    
-    /* Prevents the image from repeating (tiling) */
-    background-repeat: no-repeat;
-    
-    /* OPTIONAL: Keeps the background still while you scroll (cool effect) */
-    background-attachment: fixed;
-    
-    /* Removes default browser margins */
-    margin: 0;
+  /* Flexbox damit alles mittig ist (auch horizontal) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* Hintergrundbild */
+  background-image: url('background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  min-height: 100vh; /* Mindestens so hoch wie der Bildschirm */
 }
 
-#doors{
-  position: relative;
-  padding: 40px;
-  border: 2px solid;
-  border-radius: 10px;
-}
-
+/* --- GRID LAYOUT --- */
 .Grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   align-items: start;
-  gap: 25px 25px;
-  /* WICHTIG: Kein fester Abstand mehr */
+  gap: 0px 25px; /* Abstand zwischen Türchen */
   padding: 0 30px;
-  /* Kleines Padding an den Seiten ist okay */
   width: 90%;
-  /* Den gesamten Platz nutzen */
-
+  max-width: 1200px; /* Damit es auf riesigen Monitoren nicht zu breit wird */
+  margin: 0 auto;
 }
 
-.button {
-  /* Größe */
+/* --- FLIP CARD EFFEKT START --- */
+
+/* 1. Der Container: Definiert den Platz und den 3D-Raum */
+.door-container {
   width: 100%;
-  height: auto; /* Oder 'auto' mit aspect-ratio, wie vorhin besprochen */
-  aspect-ratio: 3/2;
-  /* DIE WICHTIGEN BEFEHLE FÜR ZENTRIERUNG: */
-  display: flex;             /* Macht den Button zur Flex-Box */
-  justify-content: center;   /* Zentriert die Zahl horizontal (Links/Rechts) */
-  align-items: center;       /* Zentriert die Zahl vertikal (Oben/Unten) */
-  
-  /* Optik (Farben, Schrift, etc. aus dem vorherigen Schritt) */
-  border-radius: 10px;
-  font-size: 40px;
-  font-family: sans-serif;
-  border: none;
-  background-color: transparent;
-  color: #fff;
+  aspect-ratio: 1/1; /* Macht die Türchen quadratisch */
+  perspective: 1000px; /* Erzeugt die 3D-Tiefe */
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  transition: transform 0.2s, background-color 0.2s;
+}
+
+/* 2. Die Karte selbst: Sie dreht sich */
+.door-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  text-align: center;
+  transition: transform 0.6s; /* Animationsdauer */
+  transform-style: preserve-3d;
+}
+
+/* Wenn Klasse "open" gesetzt ist (durch Klick), drehen wir die Karte */
+.door-container.open .door-card {
+  transform: rotateY(180deg);
+}
+
+/* 3. Gemeinsame Styles für Vorder- und Rückseite */
+.face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden; /* Versteckt die Rückseite beim Drehen */
   
-  /* Sicherstellen, dass kein Innenabstand die Mitte verschiebt */
-  padding: 0; 
+  /* Zentrierung von Zahlen/Text */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  border-radius: 10px;
+  font-family: sans-serif;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
-/* Hover-Effekte bleiben gleich */
-.button:hover {
-  background-color: #c43e3e;
-  transform: scale(1.05);
-}
-
-.button:active {
-  transform: scale(0.95);
-}
-
-/* Media Query: Alles hier drin gilt nur für Bildschirme,
-   die kleiner als 900px sind (Tablets & Handys) */
-@media screen and (max-width: 900px) {
-h1{
+/* VORDERSEITE (Die Zahl) */
+.front {
+  background-color:transparent;
+  color:  #d1d2c8;
   font-size: 40px;
+  font-weight: bold;
 }
 
-h2{
-  font-size: 20px;
+/* RÜCKSEITE (Der Text/Aufgabe) */
+.back {
+  background-color: #f1f1f1; /* Helle Karte */
+  color: #333;
+  transform: rotateY(180deg); /* Ist am Anfang schon gedreht */
+  font-size: 16px;
+  padding: 10px; /* Etwas Abstand zum Rand für Text */
+  box-sizing: border-box;
 }
 
-  /* Ändert das Gitter auf 4 Spalten */
-  .Grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px 12px;
-    padding: 0 15px;
+/* Hover-Effekt nur wenn nicht offen */
+.door-container:hover .front {
+  background-color: #c43e3e; /* Helleres Rot bei Hover */
+}
+
+/* --- MEDIA QUERY (Handy) --- */
+@media screen and (max-width: 900px) {
+  h1 {
+    font-size: 40px;
   }
 
-  /* WICHTIG: Damit die Buttons auch in die schmaleren Spalten passen */
-  .button {
-    width: 100%;       /* Button nimmt die Breite der Spalte an */
-    height: auto;      /* Höhe passt sich automatisch an */
-    aspect-ratio: 1/1; /* Sorgt dafür, dass die Buttons quadratisch bleiben */
-    min-width: 0;      /* Verhindert, dass der Button aus dem Raster bricht */
+  h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  /* Gitter auf 4 Spalten ändern */
+  .Grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 0 10px;
+    width: 95%;
+  }
+
+  /* Schriftgrößen anpassen */
+  .front {
+    font-size: 24px;
+  }
+  
+  .back {
+    font-size: 12px; /* Text muss klein sein, damit er reinpasst */
+    padding: 2px;
   }
 }
