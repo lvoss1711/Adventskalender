@@ -40,6 +40,7 @@ h2 {
   color: #d1d2c8;
   text-align: center;
   text-shadow: 2px 2px 4px #000000;
+  font-family: sans-serif;
 }
 
 body {
@@ -49,7 +50,7 @@ body {
   align-items: center;
   
   /* Hintergrundbild */
-  background-image: url('AI_bg2.png');
+  background-image: url('AI_bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -120,21 +121,31 @@ body {
   font-size: 60px;
   font-weight: bold;
   font-family: "Rubik Puddles", system-ui;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
 }
 
 /* RÜCKSEITE (Der Text/Aufgabe) */
 .back {
-  background-color: #d1d2c8; /* Helle Karte */
-  color: #333;
+  background-color: #081d44b3; /* Helle Karte */
+  color: #d1d2c8;
   transform: rotateY(180deg); /* Ist am Anfang schon gedreht */
   font-size: 16px;
   padding: 10px; /* Etwas Abstand zum Rand für Text */
   box-sizing: border-box;
+  font-family: "Mr Bedfort", cursive;
 }
 
 /* Hover-Effekt nur wenn nicht offen */
 .door-container:hover .front {
-  background-color: rgba(241, 239, 232, 0.3); /* Helleres Rot bei Hover */
+  /*background-color: rgba(241, 239, 232, 0.3); /* Helleres Rot bei Hover */
+  /* NEU: Zahl wird strahlend weiß ("ausgefüllter") */
+  color: #fff9ec;
+  
+  /* NEU: Ein Glühen, das die Schrift dicker/voller wirken lässt */
+  text-shadow: 0 0 10px rgba(255, 193, 113, 0.97);
+  
+  /* NEU: Zahl wird 20% größer */
+  transform: scale(1.2);
 }
 
 /* --- MEDIA QUERY (Handy) --- */
@@ -171,4 +182,37 @@ body {
     padding: 2px;
   }
   }
+}
+#snow-zone {
+    /* WICHTIG: Damit wir ihn frei bewegen können */
+    position: absolute; 
+    
+    /* BEISPIEL: Schneit nur in der Mitte, ab 100px von oben */
+    top: 100px;      /* Startet 100px unter dem oberen Rand */
+    left: 10%;       /* Beginnt bei 20% der Bildschirmbreite */
+    width: 80%;      /* Ist 60% breit (also mittig) */
+    height: 650px;   /* Der Schnee fällt nur 500px weit */
+    
+    /* WICHTIG: Technik */
+    overflow: hidden;      /* Schneidet Flocken ab, die den Bereich verlassen */
+    pointer-events: none;  /* Ganz wichtig! Man kann "durch" den Container klicken */
+    z-index: 99;           /* Liegt über allem anderen */
+}
+
+/* Die Flocken selbst bleiben "absolute" relativ zur Zone */
+.snowflake {
+    position: absolute;
+    top: -20px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0); }
+    100% { 
+        /* Fällt bis zum Ende des Containers (100% der Container-Höhe) */
+        transform: translateY(650px); /* Muss zur Höhe von #snow-zone passen */
+        opacity: 0.2;
+    }
 }
