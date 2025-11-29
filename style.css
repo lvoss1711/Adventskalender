@@ -5,7 +5,7 @@ h1 {
   font-size: 100px;
   /* Kleiner Schatten für bessere Lesbarkeit auf Bildern */
   text-shadow: 2px 2px 4px #000000; 
-  font-weight: 100;
+  font-weight: 800;
 }
 
 .mr-bedfort-regular {
@@ -22,7 +22,7 @@ h1 {
 
 .rubik-puddles-regular {
   font-family: "Rubik Puddles", system-ui;
-  font-weight: 400;
+  font-weight: 800;
   font-style: normal;
 }
 
@@ -50,7 +50,7 @@ body {
   align-items: center;
   
   /* Hintergrundbild */
-  background-image: url('try1_bg.png');
+  background-image: url('try_bg.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
