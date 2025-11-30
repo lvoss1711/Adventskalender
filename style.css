@@ -48,6 +48,8 @@
 
 h1 {
   margin: 2%;
+  margin-top: 4%;
+  margin-bottom: 0%;
   text-align: center;
   color: #d1d2c8;
   font-size: 120px;
@@ -92,6 +94,7 @@ h2 {
   text-align: center;
   text-shadow: 2px 2px 4px #000000a4;
   font-family: 'gert', cursive;
+  font-size: 20px;
 }
 
 body {
@@ -178,13 +181,18 @@ body {
 
 /* RÜCKSEITE (Der Text/Aufgabe) */
 .back {
-  background-color: #081d44b3; /* Helle Karte */
-  color: #d1d2c8;
+  background-color: #030c1da4; /* Helle Karte */
+  color: #e2e3d6;
   transform: rotateY(180deg); /* Ist am Anfang schon gedreht */
   font-size: 16px;
   padding: 10px; /* Etwas Abstand zum Rand für Text */
   box-sizing: border-box;
   font-family: 'gert', cursive;
+
+
+  background-image: radial-gradient(#121e28b5 15%, transparent 16%); /* Die Punkte (Eisblau) */
+  background-size: 20px 20px; /* Größe des Rasters */
+  background-position: 0 0, 10px 10px; /* Versatz für ein verspieltes Muster */
 }
 
 /* Hover-Effekt nur wenn nicht offen */
@@ -257,17 +265,17 @@ body {
     top: -20px;
     background-color: rgb(255, 254, 202);
     border-radius: 50%;
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 /* Schlüsselbild für den Schnee im HINTERGRUND (fällt nur kurz) */
 @keyframes fall-back {
     0% { 
         transform: translateY(0); 
-        opacity: 0.8; /* Start-Sichtbarkeit */
+        opacity: 0.2; /* Start-Sichtbarkeit */
     }
     85% {
-        opacity: 0.8; /* Bleibt bis kurz vor Ende sichtbar */
+        opacity: 0.2; /* Bleibt bis kurz vor Ende sichtbar */
     }
     100% { 
         transform: translateY(600px); 
@@ -279,10 +287,10 @@ body {
 @keyframes fall-front {
     0% { 
         transform: translateY(0) translateX(0); 
-        opacity: 0.9; /* Start-Sichtbarkeit (heller) */
+        opacity: 0.8; /* Start-Sichtbarkeit (heller) */
     }
     50% {
-        opacity: 0.9; /* Bleibt lange sichtbar */
+        opacity: 0.8; /* Bleibt lange sichtbar */
     }
     90% {
         opacity: 0; /* Bleibt lange sichtbar */
@@ -294,7 +302,7 @@ body {
 }
 .snowflake.mid-snow {
     z-index: 500;   /* Liegt zwischen Hintergrund (1) und Vordergrund (1000) */
-    opacity: 0.6;   /* Mittelmäßig sichtbar */
+    opacity: 0.4;   /* Mittelmäßig sichtbar */
     animation-name: fall-mid; /* Eigene Animation */
 }
 
@@ -302,10 +310,10 @@ body {
 @keyframes fall-mid {
     0% { 
         transform: translateY(0) translateX(0); 
-        opacity: 0.6; /* Start-Sichtbarkeit (mittel) */
+        opacity: 0.4; /* Start-Sichtbarkeit (mittel) */
     }
     85% {
-        opacity: 0.6; /* Bleibt bis kurz vor Ende sichtbar */
+        opacity: 0.4; /* Bleibt bis kurz vor Ende sichtbar */
     }
     100% { 
         transform: translateY(700px) translateX(10px); 
