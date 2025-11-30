@@ -13,8 +13,8 @@
 
 <body id="Adventskalender">
     <div id="snow-zone"></div>
-    <h1 class="rubik-puddles-regular" style="font-weight: bold;">Adventskalender</h1>
-    <h2 class="rubik-wet-paint-regular">Klicke aufs Türchen für jeden Tag eine neue Aufgabe</h2>
+    <h1>Adventskalender</h1>
+    <h2>Hinter jedem Türchen verbirgt sich eine neue kreative Aufgabe</h2>
     
     <div class="Grid">
         <div class="door-container" data-day="4">
@@ -209,29 +209,63 @@ document.querySelectorAll(".door-container").forEach(door => {
 <script>
     function createSnowflake() {
         const container = document.getElementById('snow-zone');
-        if (!container) return; // Abbruch, falls Zone nicht gefunden
+        if (!container) return; 
 
         const snowflake = document.createElement('div');
-        snowflake.classList.add('snowflake');
         
-        // Position innerhalb der Zone (0 bis 100% der Zone-Breite)
-        snowflake.style.left = Math.random() * 100 + '%';
+        // Zufallszahl zwischen 0 und 1
+        const randomLayer = Math.random();
         
-        const size = Math.random() * 5 + 2 + 'px';
+        let typeClass, animName, minSize, maxSize, minDur, maxDur;
+
+        // ENTSCHEIDUNG: WELCHE EBENE?
+        if (randomLayer < 0.33) {
+            // --- HINTERGRUND (33%) ---
+            typeClass = 'back-snow';
+            animName = 'fall-back';
+            minSize = 1; maxSize = 3;    // Sehr klein
+            minDur = 8; maxDur = 15;     // Langsam (weil weit weg wirkt es langsam)
+        } else if (randomLayer < 0.66) {
+            // --- MITTELGRUND (33%) ---
+            typeClass = 'mid-snow';
+            animName = 'fall-mid';
+            minSize = 3; maxSize = 5;    // Mittelgroß
+            minDur = 5; maxDur = 10;     // Mittlere Geschwindigkeit
+        } else {
+            // --- VORDERGRUND (33%) ---
+            typeClass = 'front-snow';
+            animName = 'fall-front';
+            minSize = 5; maxSize = 8;    // Groß
+            minDur = 5; maxDur = 7;      // Wirkt schneller, weil nah
+        }
+
+        // Klasse hinzufügen
+        snowflake.classList.add('snowflake', typeClass);
+        
+        // Größe setzen
+        const size = Math.random() * (maxSize - minSize) + minSize + 'px';
         snowflake.style.width = size;
         snowflake.style.height = size;
         
-        const duration = Math.random() * 3 + 2 + 's';
-        snowflake.style.animation = `fall ${duration} linear`;
+        // Dauer setzen
+        const duration = Math.random() * (maxDur - minDur) + minDur + 's';
+        
+        // Positionierung (Links/Rechts zufällig)
+        snowflake.style.left = Math.random() * 100 + '%';
+        
+        // Animation zuweisen
+        snowflake.style.animation = `${animName} ${duration} linear`;
         
         container.appendChild(snowflake);
         
+        // Aufräumen nach Ende der Animation
         setTimeout(() => {
             snowflake.remove();
         }, parseFloat(duration) * 1000);
     }
 
-    setInterval(createSnowflake, 90); 
+    // Frequenz: Alle 80ms eine neue Flocke (etwas mehr Schnee für 3 Ebenen)
+    setInterval(createSnowflake, 30); 
 </script>
 </body>
 </html>

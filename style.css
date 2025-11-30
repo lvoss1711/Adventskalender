@@ -1,11 +1,62 @@
+@font-face {
+    font-family: 'Snowtop Caps';
+    src: url('SnowtopCaps.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sweater Stitch';
+    src: url('Xmas\ Sweater\ Stitch.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Dick';
+    src: url('DickensianChristmas.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'h';
+    src: url('hHangus.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'pw';
+    src: url('PWSmokey.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'isla';
+    src: url('La\ Isla\ Tortuga.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'gert';
+    src: url('TT_Gertika_Trial_Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 h1 {
   margin: 2%;
   text-align: center;
   color: #d1d2c8;
-  font-size: 100px;
-  /* Kleiner Schatten für bessere Lesbarkeit auf Bildern */
+  font-size: 120px;
+  text-shadow: 0 0 10px rgba(255, 193, 113, 0.97);
+  /* Kleiner Schatten für bessere Lesbarkeit auf Bildern 
   text-shadow: 2px 2px 4px #000000; 
-  font-weight: 800;
+  font-weight: 800;*/
+  font-family: 'isla', cursive;
+font-weight: normal;
 }
 
 .mr-bedfort-regular {
@@ -22,7 +73,7 @@ h1 {
 
 .rubik-puddles-regular {
   font-family: "Rubik Puddles", system-ui;
-  font-weight: 800;
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -39,8 +90,8 @@ h2 {
   margin-bottom: 50px;
   color: #d1d2c8;
   text-align: center;
-  text-shadow: 2px 2px 4px #000000;
-  font-family: sans-serif;
+  text-shadow: 2px 2px 4px #000000a4;
+  font-family: 'gert', cursive;
 }
 
 body {
@@ -50,7 +101,7 @@ body {
   align-items: center;
   
   /* Hintergrundbild */
-  background-image: url('try_bg.png');
+  background-image: url('background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -118,9 +169,10 @@ body {
 .front {
   background-color:transparent;
   color:  #d1d2c8;
-  font-size: 60px;
-  font-weight: bold;
-  font-family: "Rubik Puddles", system-ui;
+  font-size: 90px;
+  /*font-weight: bold;
+  font-family: "Rubik Puddles", system-ui;*/
+  font-family: 'isla', cursive;
   transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
 }
 
@@ -132,7 +184,7 @@ body {
   font-size: 16px;
   padding: 10px; /* Etwas Abstand zum Rand für Text */
   box-sizing: border-box;
-  font-family: "Mr Bedfort", cursive;
+  font-family: 'gert', cursive;
 }
 
 /* Hover-Effekt nur wenn nicht offen */
@@ -188,10 +240,10 @@ body {
     position: absolute; 
     
     /* BEISPIEL: Schneit nur in der Mitte, ab 100px von oben */
-    top: 100px;      /* Startet 100px unter dem oberen Rand */
-    left: 10%;       /* Beginnt bei 20% der Bildschirmbreite */
-    width: 80%;      /* Ist 60% breit (also mittig) */
-    height: 650px;   /* Der Schnee fällt nur 500px weit */
+    top: 25px;      /* Startet 100px unter dem oberen Rand */
+    left: 6%;       /* Beginnt bei 20% der Bildschirmbreite */
+    width: 90%;      /* Ist 60% breit (also mittig) */
+    height: 108%;   /* Der Schnee fällt nur 500px weit */
     
     /* WICHTIG: Technik */
     overflow: hidden;      /* Schneidet Flocken ab, die den Bereich verlassen */
@@ -203,16 +255,60 @@ body {
 .snowflake {
     position: absolute;
     top: -20px;
-    background-color: white;
+    background-color: rgb(255, 254, 202);
     border-radius: 50%;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
-@keyframes fall {
-    0% { transform: translateY(0); }
+/* Schlüsselbild für den Schnee im HINTERGRUND (fällt nur kurz) */
+@keyframes fall-back {
+    0% { 
+        transform: translateY(0); 
+        opacity: 0.8; /* Start-Sichtbarkeit */
+    }
+    85% {
+        opacity: 0.8; /* Bleibt bis kurz vor Ende sichtbar */
+    }
     100% { 
-        /* Fällt bis zum Ende des Containers (100% der Container-Höhe) */
-        transform: translateY(650px); /* Muss zur Höhe von #snow-zone passen */
-        opacity: 0.2;
+        transform: translateY(600px); 
+        opacity: 0; /* Fadet am Ende komplett aus (outfade) */
+    }
+}
+
+/* Schlüsselbild für den Schnee im VORDERGRUND (fällt über den ganzen Bildschirm) */
+@keyframes fall-front {
+    0% { 
+        transform: translateY(0) translateX(0); 
+        opacity: 0.9; /* Start-Sichtbarkeit (heller) */
+    }
+    50% {
+        opacity: 0.9; /* Bleibt lange sichtbar */
+    }
+    90% {
+        opacity: 0; /* Bleibt lange sichtbar */
+    }
+    100% { 
+        transform: translateY(1000px) translateX(30px); 
+        opacity: 0; /* Fadet am Ende komplett aus */
+    }
+}
+.snowflake.mid-snow {
+    z-index: 500;   /* Liegt zwischen Hintergrund (1) und Vordergrund (1000) */
+    opacity: 0.6;   /* Mittelmäßig sichtbar */
+    animation-name: fall-mid; /* Eigene Animation */
+}
+
+/* Die Animation für die Mitte: Fällt ca. 60% des Bildschirms */
+@keyframes fall-mid {
+    0% { 
+        transform: translateY(0) translateX(0); 
+        opacity: 0.6; /* Start-Sichtbarkeit (mittel) */
+    }
+    85% {
+        opacity: 0.6; /* Bleibt bis kurz vor Ende sichtbar */
+    }
+    100% { 
+        transform: translateY(700px) translateX(10px); 
+        opacity: 0; /* Fadet am Ende komplett aus */
     }
 }
