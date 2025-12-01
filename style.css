@@ -1,49 +1,50 @@
 @font-face {
-    font-family: 'Snowtop Caps';
-    src: url('SnowtopCaps.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Snowtop Caps';
+  src: url('SnowtopCaps.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Sweater Stitch';
-    src: url('Xmas\ Sweater\ Stitch.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Dick';
-    src: url('DickensianChristmas.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Sweater Stitch';
+  src: url('Xmas\ Sweater\ Stitch.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'h';
-    src: url('hHangus.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Dick';
+  src: url('DickensianChristmas.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'pw';
-    src: url('PWSmokey.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'h';
+  src: url('hHangus.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'isla';
-    src: url('La\ Isla\ Tortuga.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'pw';
+  src: url('PWSmokey.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'gert';
-    src: url('TT_Gertika_Trial_Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'isla';
+  src: url('La\ Isla\ Tortuga.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'gert';
+  src: url('TT_Gertika_Trial_Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 h1 {
@@ -58,7 +59,7 @@ h1 {
   text-shadow: 2px 2px 4px #000000; 
   font-weight: 800;*/
   font-family: 'isla', cursive;
-font-weight: normal;
+  font-weight: normal;
 }
 
 .mr-bedfort-regular {
@@ -86,6 +87,9 @@ font-weight: normal;
   font-size: 25px;
 }
 
+.mobile-break {
+  display: none;
+}
 
 h2 {
   margin-top: 0;
@@ -102,7 +106,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   /* Hintergrundbild */
   background-image: url('background.jpg');
   background-size: cover;
@@ -110,7 +114,8 @@ body {
   background-repeat: no-repeat;
   /*background-attachment: fixed;*/
   margin: 0;
-  min-height: 100vh; /* Mindestens so hoch wie der Bildschirm */
+  min-height: 100vh;
+  /* Mindestens so hoch wie der Bildschirm */
 }
 
 /* --- GRID LAYOUT --- */
@@ -118,10 +123,12 @@ body {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   align-items: start;
-  gap: 0px 25px; /* Abstand zwischen Türchen */
+  gap: 0px 25px;
+  /* Abstand zwischen Türchen */
   padding: 0 30px;
   width: 90%;
-  max-width: 1200px; /* Damit es auf riesigen Monitoren nicht zu breit wird */
+  max-width: 1200px;
+  /* Damit es auf riesigen Monitoren nicht zu breit wird */
   margin: 0 auto;
 }
 
@@ -130,8 +137,10 @@ body {
 /* 1. Der Container: Definiert den Platz und den 3D-Raum */
 .door-container {
   width: 100%;
-  aspect-ratio: 1/1; /* Macht die Türchen quadratisch */
-  perspective: 1000px; /* Erzeugt die 3D-Tiefe */
+  aspect-ratio: 1/1;
+  /* Macht die Türchen quadratisch */
+  perspective: 1000px;
+  /* Erzeugt die 3D-Tiefe */
   cursor: pointer;
 }
 
@@ -141,7 +150,8 @@ body {
   width: 100%;
   aspect-ratio: 4/3;
   text-align: center;
-  transition: transform 0.6s; /* Animationsdauer */
+  transition: transform 0.6s;
+  /* Animationsdauer */
   transform-style: preserve-3d;
 }
 
@@ -155,23 +165,25 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden; /* Versteckt die Rückseite beim Drehen */
-  
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+  /* Versteckt die Rückseite beim Drehen */
+
   /* Zentrierung von Zahlen/Text */
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   border-radius: 10px;
   font-family: sans-serif;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* VORDERSEITE (Die Zahl) */
 .front {
-  background-color:transparent;
-  color:  #d1d2c8;
+  background-color: transparent;
+  color: #d1d2c8;
   font-size: 90px;
   /*font-weight: bold;
   font-family: "Rubik Puddles", system-ui;*/
@@ -181,18 +193,24 @@ body {
 
 /* RÜCKSEITE (Der Text/Aufgabe) */
 .back {
-  background-color: #030c1da4; /* Helle Karte */
+  background-color: #030c1da4;
+  /* Helle Karte */
   color: #e2e3d6;
-  transform: rotateY(180deg); /* Ist am Anfang schon gedreht */
-  font-size: 16px;
-  padding: 10px; /* Etwas Abstand zum Rand für Text */
+  transform: rotateY(180deg);
+  /* Ist am Anfang schon gedreht */
+  font-size: 14px;
+  padding: 10px;
+  /* Etwas Abstand zum Rand für Text */
   box-sizing: border-box;
   font-family: 'gert', cursive;
 
 
-  background-image: radial-gradient(#121e28b5 15%, transparent 16%); /* Die Punkte (Eisblau) */
-  background-size: 20px 20px; /* Größe des Rasters */
-  background-position: 0 0, 10px 10px; /* Versatz für ein verspieltes Muster */
+  background-image: radial-gradient(#121e28b5 15%, transparent 16%);
+  /* Die Punkte (Eisblau) */
+  background-size: 20px 20px;
+  /* Größe des Rasters */
+  background-position: 0 0, 10px 10px;
+  /* Versatz für ein verspieltes Muster */
 }
 
 /* Hover-Effekt nur wenn nicht offen */
@@ -200,24 +218,158 @@ body {
   /*background-color: rgba(241, 239, 232, 0.3); /* Helleres Rot bei Hover */
   /* NEU: Zahl wird strahlend weiß ("ausgefüllter") */
   color: #fff9ec;
-  
+
   /* NEU: Ein Glühen, das die Schrift dicker/voller wirken lässt */
   text-shadow: 0 0 10px rgba(255, 193, 113, 0.97);
-  
+
   /* NEU: Zahl wird 20% größer */
   transform: scale(1.2);
 }
 
+
+
+
+
+#snow-zone {
+  /* WICHTIG: Damit wir ihn frei bewegen können */
+  position: absolute;
+
+  /* BEISPIEL: Schneit nur in der Mitte, ab 100px von oben */
+  top: 25px;
+  /* Startet 100px unter dem oberen Rand */
+  left: 6%;
+  /* Beginnt bei 20% der Bildschirmbreite */
+  width: 90%;
+  /* Ist 60% breit (also mittig) */
+  height: 108%;
+  /* Der Schnee fällt nur 500px weit */
+
+  /* WICHTIG: Technik */
+  overflow: hidden;
+  /* Schneidet Flocken ab, die den Bereich verlassen */
+  pointer-events: none;
+  /* Ganz wichtig! Man kann "durch" den Container klicken */
+  z-index: 99;
+  /* Liegt über allem anderen */
+}
+
+/* Die Flocken selbst bleiben "absolute" relativ zur Zone */
+.snowflake {
+  position: absolute;
+  top: -20px;
+  background-color: rgb(255, 254, 202);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* Schlüsselbild für den Schnee im HINTERGRUND (fällt nur kurz) */
+@keyframes fall-back {
+  0% {
+    transform: translateY(0);
+    opacity: 0.2;
+    /* Start-Sichtbarkeit */
+  }
+
+  85% {
+    opacity: 0.2;
+    /* Bleibt bis kurz vor Ende sichtbar */
+  }
+
+  100% {
+    transform: translateY(600px);
+    opacity: 0;
+    /* Fadet am Ende komplett aus (outfade) */
+  }
+}
+
+/* Schlüsselbild für den Schnee im VORDERGRUND (fällt über den ganzen Bildschirm) */
+@keyframes fall-front {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.8;
+    /* Start-Sichtbarkeit (heller) */
+  }
+
+  50% {
+    opacity: 0.8;
+    /* Bleibt lange sichtbar */
+  }
+
+  90% {
+    opacity: 0;
+    /* Bleibt lange sichtbar */
+  }
+
+  100% {
+    transform: translateY(1000px) translateX(30px);
+    opacity: 0;
+    /* Fadet am Ende komplett aus */
+  }
+}
+
+.snowflake.mid-snow {
+  z-index: 500;
+  /* Liegt zwischen Hintergrund (1) und Vordergrund (1000) */
+  opacity: 0.4;
+  /* Mittelmäßig sichtbar */
+  animation-name: fall-mid;
+  /* Eigene Animation */
+}
+
+/* Die Animation für die Mitte: Fällt ca. 60% des Bildschirms */
+@keyframes fall-mid {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.4;
+    /* Start-Sichtbarkeit (mittel) */
+  }
+
+  85% {
+    opacity: 0.4;
+    /* Bleibt bis kurz vor Ende sichtbar */
+  }
+
+  100% {
+    transform: translateY(700px) translateX(10px);
+    opacity: 0;
+    /* Fadet am Ende komplett aus */
+  }
+}
+
 /* --- MEDIA QUERY (Handy) --- */
 @media screen and (max-width: 900px) {
+  .mobile-break {
+    display: inline;
+  }
+
   h1 {
-    font-size: 40px;
+    line-height: 0.8;
+    margin-top: 35px;
+    font-size: 100px;
   }
 
   h2 {
-    font-size: 18px;
+    font-size: 12px;
     margin-bottom: 20px;
+    margin-top: 20px;
   }
+
+  body {
+  /* Flexbox damit alles mittig ist (auch horizontal) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+background-color: #213858;
+  /* Hintergrundbild */
+  background-image: url('mobile_bg2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /*background-attachment: fixed;*/
+  margin: 0;
+  min-height: 100vh;
+  /* Mindestens so hoch wie der Bildschirm */
+}
 
   /* Gitter auf 4 Spalten ändern */
   .Grid {
@@ -225,98 +377,52 @@ body {
     gap: 10px;
     padding: 0 10px;
     width: 95%;
+    margin-bottom: 40px;
   }
 
   .door-card {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3/4;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+  }
 
   /* Schriftgrößen anpassen */
   .front {
-    font-size: 24px;
+    font-size: 50px;
   }
-  
+
   .back {
-    font-size: 12px; /* Text muss klein sein, damit er reinpasst */
+    font-size: 10px;
+    /* Text muss klein sein, damit er reinpasst */
     padding: 2px;
   }
+  #snow-zone {
+      /* WICHTIG: Damit wir ihn frei bewegen können */
+      position: absolute;
+
+      /* BEISPIEL: Schneit nur in der Mitte, ab 100px von oben */
+      top: 0px;
+      /* Startet 100px unter dem oberen Rand */
+      left: 0%;
+      /* Beginnt bei 20% der Bildschirmbreite */
+      width: 100%;
+      /* Ist 60% breit (also mittig) */
+      height: 108%;
   }
-}
-#snow-zone {
-    /* WICHTIG: Damit wir ihn frei bewegen können */
-    position: absolute; 
-    
-    /* BEISPIEL: Schneit nur in der Mitte, ab 100px von oben */
-    top: 25px;      /* Startet 100px unter dem oberen Rand */
-    left: 6%;       /* Beginnt bei 20% der Bildschirmbreite */
-    width: 90%;      /* Ist 60% breit (also mittig) */
-    height: 108%;   /* Der Schnee fällt nur 500px weit */
-    
-    /* WICHTIG: Technik */
-    overflow: hidden;      /* Schneidet Flocken ab, die den Bereich verlassen */
-    pointer-events: none;  /* Ganz wichtig! Man kann "durch" den Container klicken */
-    z-index: 99;           /* Liegt über allem anderen */
-}
+  @keyframes fall-front {
+      0% { 
+          transform: translateY(0) translateX(0); 
+          opacity: 0.8; 
+      }
+      90% {
+          opacity: 0.8; /* Früher ausblenden */
+      }
+      100% { 
+          /* Statt 1000px nutzen wir 100vh (100% der Bildschirmhöhe) 
+             oder einen festen kleineren Wert wie 600px */
+          transform: translateY(100vh) translateX(10px); 
+          opacity: 0; 
+      }
 
-/* Die Flocken selbst bleiben "absolute" relativ zur Zone */
-.snowflake {
-    position: absolute;
-    top: -20px;
-    background-color: rgb(255, 254, 202);
-    border-radius: 50%;
-    opacity: 0.5;
-}
-
-/* Schlüsselbild für den Schnee im HINTERGRUND (fällt nur kurz) */
-@keyframes fall-back {
-    0% { 
-        transform: translateY(0); 
-        opacity: 0.2; /* Start-Sichtbarkeit */
-    }
-    85% {
-        opacity: 0.2; /* Bleibt bis kurz vor Ende sichtbar */
-    }
-    100% { 
-        transform: translateY(600px); 
-        opacity: 0; /* Fadet am Ende komplett aus (outfade) */
-    }
-}
-
-/* Schlüsselbild für den Schnee im VORDERGRUND (fällt über den ganzen Bildschirm) */
-@keyframes fall-front {
-    0% { 
-        transform: translateY(0) translateX(0); 
-        opacity: 0.8; /* Start-Sichtbarkeit (heller) */
-    }
-    50% {
-        opacity: 0.8; /* Bleibt lange sichtbar */
-    }
-    90% {
-        opacity: 0; /* Bleibt lange sichtbar */
-    }
-    100% { 
-        transform: translateY(1000px) translateX(30px); 
-        opacity: 0; /* Fadet am Ende komplett aus */
-    }
-}
-.snowflake.mid-snow {
-    z-index: 500;   /* Liegt zwischen Hintergrund (1) und Vordergrund (1000) */
-    opacity: 0.4;   /* Mittelmäßig sichtbar */
-    animation-name: fall-mid; /* Eigene Animation */
-}
-
-/* Die Animation für die Mitte: Fällt ca. 60% des Bildschirms */
-@keyframes fall-mid {
-    0% { 
-        transform: translateY(0) translateX(0); 
-        opacity: 0.4; /* Start-Sichtbarkeit (mittel) */
-    }
-    85% {
-        opacity: 0.4; /* Bleibt bis kurz vor Ende sichtbar */
-    }
-    100% { 
-        transform: translateY(700px) translateX(10px); 
-        opacity: 0; /* Fadet am Ende komplett aus */
-    }
+  }
 }

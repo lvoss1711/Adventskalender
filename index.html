@@ -13,7 +13,7 @@
 
 <body id="Adventskalender">
     <div id="snow-zone"></div>
-    <h1>Adventskalender</h1>
+    <h1>Advents<br class="mobile-break">kalender</h1>
     <h2>Hinter jedem Türchen verbirgt sich eine neue kreative Aufgabe</h2>
     
     <div class="Grid">
@@ -196,7 +196,7 @@ document.querySelectorAll(".door-container").forEach(door => {
 
         // Türchen darf nur geöffnet werden, wenn Tag erreicht wurde 
         // 10 -> 111 austauschen
-        if (currentDay < day || currentMonth !== 10 ) {
+        if (currentDay < day || currentMonth !== 11 ) {
             alert("Du kannst dieses Türchen erst am " + day + ". Dezember öffnen!");
             return;
         }
