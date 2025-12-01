@@ -419,7 +419,7 @@ background-color: #213858;
       /* Beginnt bei 20% der Bildschirmbreite */
       width: 100%;
       /* Ist 60% breit (also mittig) */
-      height: 108%;
+      height: 200%;
   }
   @keyframes fall-front {
       0% { 
@@ -464,6 +464,12 @@ background-color: #213858;
     width: 300px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     border: 2px solid #791515; /* Weihnachtsrot */
+      background-image: radial-gradient(#121e2834 15%, transparent 16%);
+  /* Die Punkte (Eisblau) */
+  background-size: 20px 20px;
+  /* Größe des Rasters */
+  background-position: 0 0, 10px 10px;
+  /* Versatz für ein verspieltes Muster */
     
     /* Kleine Animation beim Erscheinen */
     animation: popIn 0.3s ease-out;
@@ -483,7 +489,7 @@ background-color: #213858;
 .alert-card p {
     color: #161B23;
     font-family: 'gert', cursive; /* Deine Text-Schrift */
-    font-size: 18px;
+    font-size: 19px;
     margin: 15px 0;
     font-weight: bold;
 }
