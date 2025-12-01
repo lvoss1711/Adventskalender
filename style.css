@@ -47,6 +47,14 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'chris';
+  src: url('Christmas.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 h1 {
   margin: 2%;
   margin-top: 4%;
@@ -226,8 +234,12 @@ body {
   transform: scale(1.2);
 }
 
-
-
+/* Diese Klasse simuliert den Hover-Effekt per Klick */
+.door-container.touch-active .front {
+  color: #fff9ec;
+  text-shadow: 0 0 10px rgba(255, 193, 113, 0.97);
+  transform: scale(1.2);
+}
 
 
 #snow-zone {
@@ -414,15 +426,102 @@ background-color: #213858;
           transform: translateY(0) translateX(0); 
           opacity: 0.8; 
       }
-      90% {
+      80% {
           opacity: 0.8; /* Früher ausblenden */
       }
       100% { 
           /* Statt 1000px nutzen wir 100vh (100% der Bildschirmhöhe) 
              oder einen festen kleineren Wert wie 600px */
-          transform: translateY(100vh) translateX(10px); 
+          transform: translateY(110vh) translateX(10px); 
           opacity: 0; 
       }
 
   }
+}
+
+/* Der dunkle Hintergrund, der den Rest der Seite abdeckt */
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Halb-transparentes Schwarz */
+    display: none; /* Standardmäßig versteckt */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Muss höher sein als der Schnee (99) und Türchen */
+    backdrop-filter: blur(5px); /* Macht den Hintergrund unscharf (Milchglas) */
+}
+
+/* Die Karte selbst */
+.alert-card {
+    background-color: #d1d2c8; /* Cremeweiß */
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 80%;
+    width: 300px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border: 2px solid #791515; /* Weihnachtsrot */
+    
+    /* Kleine Animation beim Erscheinen */
+    animation: popIn 0.3s ease-out;
+}
+
+/* Der Titel "Ho Ho Ho" */
+.alert-card h3 {
+    color: #791515;
+    font-family: 'isla', cursive; /* Deine Überschriften-Schrift */
+    font-size: 50px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+/* Der Text */
+.alert-card p {
+    color: #161B23;
+    font-family: 'gert', cursive; /* Deine Text-Schrift */
+    font-size: 18px;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.alert-card h4 {
+    font-family: 'chris', cursive; 
+ color: #791515;
+ font-size: 70px;
+ margin: 0;
+}
+
+/* Der Button */
+.alert-card button {
+    background-color: #791515;
+    color: #e7e8de;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'gert', cursive; 
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.alert-card button:hover {
+    transform: scale(1.05);
+      color: #fff9ec;
+  text-shadow: 0 0 10px rgba(255, 193, 113, 0.97);
+}
+
+/* Animation für das Aufploppen */
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Hilfsklasse zum Anzeigen */
+.alert-overlay.show {
+    display: flex; /* Zeigt das Fenster an */
 }

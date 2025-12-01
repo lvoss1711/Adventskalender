@@ -185,26 +185,62 @@
             </div>
         </div>
     </div>
-    <script>
-document.querySelectorAll(".door-container").forEach(door => {
-    door.addEventListener("click", () => {
-        const day = parseInt(door.dataset.day);
+    <div id="custom-alert" class="alert-overlay">
+    <div class="alert-card">
+        <h4>B</h4>
+        <h3>Finger weg!</h3>
+        
+        <p id="alert-message">Hier steht der Text.</p>
+        <button onclick="closeAlert()">Zurück</button>
+    </div>
+</div>
+<script>
+    // Funktion zum Anzeigen des Fensters
+    function showCustomAlert(text) {
+        const overlay = document.getElementById('custom-alert');
+        const message = document.getElementById('alert-message');
+        
+        message.textContent = text; // Text setzen
+        overlay.classList.add('show'); // Fenster sichtbar machen
+    }
 
-        const now = new Date();
-        const currentDay = now.getDate();
-        const currentMonth = now.getMonth() ; // 11 für Dezember
+    // Funktion zum Schließen (wird vom Button aufgerufen)
+    function closeAlert() {
+        document.getElementById('custom-alert').classList.remove('show');
+    }
 
-        // Türchen darf nur geöffnet werden, wenn Tag erreicht wurde 
-        // 10 -> 111 austauschen
-        if (currentDay < day || currentMonth !== 11 ) {
-            alert("Du kannst dieses Türchen erst am " + day + ". Dezember öffnen!");
-            return;
-        }
+    // Türchen-Logik
+    document.querySelectorAll(".door-container").forEach(door => {
+        door.addEventListener("click", () => {
+            const day = parseInt(door.dataset.day);
+            const now = new Date();
+            const currentDay = now.getDate();
+            const currentMonth = now.getMonth(); // 11 für Dezember
 
-        // Wenn erlaubt → Tür öffnen
-        door.classList.toggle("open");
+            // 1. Datum prüfen
+            if (currentDay < day || currentMonth !== 11 ) {
+                // HIER IST DIE ÄNDERUNG: Statt alert() nutzen wir unsere Funktion
+                showCustomAlert("Es ist noch nicht so weit! Dieses Türchen öffnet sich erst am " + day + ". Dezember.");
+                return;
+            }
+
+            // 2. Handy-Logik für Effekte
+            const isMobile = window.innerWidth <= 900;
+            door.classList.add("touch-active");
+
+            if (isMobile) {
+                setTimeout(() => {
+                    door.classList.toggle("open");
+                    door.classList.remove("touch-active");
+                }, 350); 
+            } else {
+                door.classList.toggle("open");
+                setTimeout(() => {
+                    door.classList.remove("touch-active");
+                }, 300);
+            }
+        });
     });
-});
 </script>
 <script>
     function createSnowflake() {
