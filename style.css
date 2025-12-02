@@ -384,18 +384,62 @@ background-color: #213858;
 }
 
   /* Gitter auf 4 Spalten ändern */
-  .Grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+.Grid {
+    grid-template-columns: repeat(4, 1fr); /* Deine gewünschten 4 Spalten */
+    gap: 8px; /* Lücken etwas kleiner machen, damit die Karten breiter werden */
     padding: 0 10px;
-    width: 95%;
-    margin-bottom: 40px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
+  /* 2. Format anpassen */
   .door-card {
     position: relative;
     width: 100%;
-    aspect-ratio: 3/4;
+    /* Wir machen die Karten etwas höher (hochkant), damit der Text nach unten Platz hat */
+    aspect-ratio: 3/4; 
+  }
+
+  /* 3. Text-Probleme lösen */
+ /* --- Nur den .back Teil in der Media Query ersetzen --- */
+/* --- INNERHALB VON @MEDIA (max-width: 900px) --- */
+
+  .back {
+    /* 1. Schriftgröße: Muss bei 4 Spalten winzig sein */
+    font-size: 9.5px; 
+    
+    /* 2. Platz maximieren */
+    padding: 1px;    
+    width: 100%;     /* Zwingt den Text in die Box-Breite */
+    box-sizing: border-box;
+
+    line-height: 1.1;
+    color: #e2e3d6;
+    background-color: #030c1da4;
+    
+    /* Flexbox für Zentrierung */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    /* --- DIE MAGISCHE KOMBINATION --- */
+    
+    /* Schritt A: Versuche, logisch nach Wörterbuch zu trennen */
+    -webkit-hyphens: auto;
+    hyphens: auto; 
+
+    /* Schritt B: Das ist der Schlüssel! */
+    /* "anywhere" erlaubt den Umbruch an JEDER Stelle, wenn das Wort sonst überläuft. */
+    /* Das rettet Wörter, die selbst mit Bindestrich zu breit wären. */
+    overflow-wrap: anywhere; 
+    
+    /* Fallback für ältere Browser */
+    word-break: break-word; 
+
+    /* Scrollen erlauben, wenn es vertikal nicht passt */
+    overflow-y: auto; 
+    overflow-x: hidden; /* Verhindert horizontales Wackeln */
   }
 
   /* Schriftgrößen anpassen */
@@ -403,11 +447,6 @@ background-color: #213858;
     font-size: 50px;
   }
 
-  .back {
-    font-size: 10px;
-    /* Text muss klein sein, damit er reinpasst */
-    padding: 2px;
-  }
   #snow-zone {
       /* WICHTIG: Damit wir ihn frei bewegen können */
       position: absolute;
