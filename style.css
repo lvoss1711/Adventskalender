@@ -406,7 +406,7 @@ background-color: #213858;
 
   .back {
     /* 1. Schriftgröße: Muss bei 4 Spalten winzig sein */
-    font-size: 9.5px; 
+    font-size: 12px; 
     
     /* 2. Platz maximieren */
     padding: 1px;    
